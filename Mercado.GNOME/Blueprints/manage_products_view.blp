@@ -1,0 +1,59 @@
+using Gtk 4.0;
+using Adw 1;
+
+Adw.Bin _root {
+  Box {
+    orientation: vertical;
+    
+    SearchEntry _searchEntry {
+      margin-top: 6;
+      margin-start: 6;
+      margin-end: 6;
+      margin-bottom: 6;
+    }
+    
+    ScrolledWindow {
+      vexpand: true;
+      Gtk.FlowBox _flowBox{
+        orientation: horizontal;
+        margin-top: 6;
+        margin-bottom: 6;
+        margin-start: 6;
+        margin-end: 6;
+        row-spacing: 6;
+        column-spacing: 6;
+        homogeneous: true;
+        selection-mode: none;
+        valign: start;
+      }
+    }
+  
+    Box {
+      margin-top: 6;
+      margin-bottom: 6;
+      margin-start: 6;
+      margin-end: 6;
+        
+      valign: end;
+      halign: center;
+      homogeneous: true;
+    
+      [start]
+      Button _previousPageButton {
+        icon-name: "go-previous-symbolic";
+      }
+      [center]
+      Label _currentPageLabel {
+        label: "1";
+        
+        styles [
+          "numeric"
+        ]
+      }
+      [end]
+      Button _nextPageButton {
+        icon-name: "go-next-symbolic";
+      }
+    }
+  }
+}

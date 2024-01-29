@@ -1,0 +1,51 @@
+using Gtk 4.0;
+using Adw 1;
+
+FlowBoxChild _root {
+  focusable: false;
+
+  Adw.PreferencesGroup {
+    Adw.ActionRow _row {
+      use-markup: false;
+      width-request: 300;
+      height-request: 78;
+      activatable-widget: _editButton;
+
+      [suffix]
+      Box _suffixBox {
+        orientation: horizontal;
+        spacing: 2;
+        valign: center;
+
+        Label _amountLabel {
+          valign: center;
+          margin-end: 6;
+        }
+
+        SpinButton _ammountSpinner {
+          digits: 3;
+          adjustment: Adjustment {
+            lower: 0;
+            upper: 1000000;
+            value: 0;
+            page-increment: 10;
+            step-increment: 1;
+          }
+
+          ;
+        }
+
+        Button _editButton {
+          icon-name: 'user-trash-symbolic';
+          halign: end;
+          valign: center;
+          tooltip-text: _('Eliminar del carrito');
+
+          styles [
+            "flat",
+          ]
+        }
+      }
+    }
+  }
+}

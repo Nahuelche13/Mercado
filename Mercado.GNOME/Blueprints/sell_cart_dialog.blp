@@ -1,0 +1,116 @@
+using Gtk 4.0;
+using Adw 1;
+
+Adw.Window _root {
+  default-width: 420;
+  modal: true;
+  resizable: false;
+  content: 
+  Adw.ToolbarView {
+    [top]
+    Adw.HeaderBar {
+      title-widget:       Label {
+      }
+
+      ;
+    }
+
+    WindowHandle {
+      Box {
+        orientation: vertical;
+        spacing: 24;
+        margin-start: 24;
+        margin-end: 24;
+
+        Label {
+          label: _('Vender carrito');
+
+          styles [
+            "title-2",
+          ]
+        }
+
+        Adw.PreferencesGroup {
+          Adw.ActionRow {
+            title: _('Precio total');
+
+            Label _priceLabel {
+              label: '$555';
+
+              styles [
+                "title-3",
+              ]
+            }
+          }
+
+          Adw.SpinRow _payEntry {
+            title: _('Pagar');
+            adjustment: 
+            Adjustment {
+              lower: 0;
+              upper: 1000000;
+              step-increment: 1;
+              value: 0;
+            }
+
+            ;
+          }
+
+          Adw.ActionRow {
+            title: _('Devolver');
+
+            Label _returnLabel {
+              label: '$555';
+
+              styles [
+                "title-3",
+              ]
+            }
+          }
+        }
+
+        Box {
+          orientation: horizontal;
+          spacing: 24;
+          halign: center;
+          homogeneous: true;
+          margin-start: 24;
+          margin-top: 24;
+          margin-end: 24;
+          margin-bottom: 24;
+
+          Button _deleteButton {
+            valign: center;
+            label: _('Borrar');
+
+            styles [
+              "pill",
+              "destructive-action",
+            ]
+          }
+
+          Button _applyButton {
+            valign: center;
+            label: _('Guardar');
+
+            styles [
+              "pill",
+              "suggested-action",
+            ]
+          }
+        }
+      }
+    }
+  }
+
+  ;
+
+  ShortcutController {
+    Shortcut {
+      trigger: 'Escape';
+      action: 'action(window.close)';
+    }
+  }
+
+  default-widget: _applyButton;
+}

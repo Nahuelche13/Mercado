@@ -1,0 +1,114 @@
+ using Gtk 4.0;
+using Adw 1;
+
+menu mainMenu {
+  item {
+    label: _('Preferencias');
+    action: 'win.preferences';
+  }
+
+  item {
+    label: _('Atajos del teclado');
+    action: 'win.keyboardShortcuts';
+  }
+
+  item {
+    label: _('Acerca de Mercado');
+    action: 'win.about';
+  }
+}
+
+Adw.ApplicationWindow _root {
+  default-width: 800;
+  default-height: 600;
+  width-request: 360;
+  height-request: 200;
+
+  Adw.Breakpoint breakpoint {
+    condition ("max-width: 400sp")
+
+    setters {
+      switcher_bar.reveal: true;
+      title_stack.visible-child: window_title;
+    }
+  }
+
+  Adw.ToolbarView {
+    [top]
+    Adw.HeaderBar header_bar {
+      title-widget: 
+        Stack title_stack {
+          Adw.ViewSwitcher {
+            stack: _viewStack;
+            policy: wide;
+          }
+          Adw.WindowTitle window_title {
+            
+          }
+        }
+      ;
+
+      [start]
+      Button _createProductButton {
+        tooltip-text: _('Crear producto (Ctrl+O)');
+        visible: true;
+
+        Adw.ButtonContent {
+          label: _('Crear');
+          icon-name: 'value-increase-symbolic';
+        }
+      }
+
+      [end]
+      MenuButton {
+        direction: none;
+        menu-model: mainMenu;
+        tooltip-text: _('Menu principal');
+        primary: true;
+      }
+    }
+    content: 
+    Adw.ViewStack _viewStack {
+      Adw.ViewStackPage {
+        name: 'sell';
+        title: _('Vender');
+        icon-name: 'auth-face-symbolic';
+        
+        child: Adw.Bin _sellPage {
+          Adw.StatusPage _greeting {
+            icon-name: 'auth-face-symbolic';
+            
+            styles ["icon-dropshadow"]
+          }
+        };
+      }
+
+      Adw.ViewStackPage {
+        name: 'manage';
+        title: _('Gestionar productos');
+        icon-name: 'applications-engineering-symbolic';
+
+        child: Adw.Bin _managePage {
+          Adw.StatusPage {
+            icon-name: 'applications-engineering-symbolic';
+
+            child: Gtk.Button _startManageButton {
+              label: _("Empezar");
+              halign: center;
+              styles ["pill", "suggested-action"]
+            };
+            
+            styles ["icon-dropshadow"]
+          }
+        };
+      }
+    }
+
+    ;
+
+    [bottom]
+    Adw.ViewSwitcherBar switcher_bar {
+      stack: _viewStack;
+    }
+  }
+}

@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>annotations</Nullable>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <DisableTransitiveProjectReferences>true</DisableTransitiveProjectReferences>
+
+    <PublishAot>true</PublishAot>
+    <TrimSelfContained>true</TrimSelfContained>
+  </PropertyGroup>
+
+<!--
+  <ItemGroup>
+    <None Remove="Resources\uy.cyt.mercado-devel.svg" />
+    <None Remove="Resources\uy.cyt.mercado-symbolic.svg" />
+    <None Remove="Resources\uy.cyt.mercado.png" />
+    <None Remove="Resources\uy.cyt.mercado.svg" />
+  </ItemGroup>
+-->
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="8.0.1" />
+  </ItemGroup>
+<!--
+  <ItemGroup>
+    <Resource Include="Resources\uy.cyt.mercado-devel.svg" />
+    <Resource Include="Resources\uy.cyt.mercado-symbolic.svg" />
+    <Resource Include="Resources\uy.cyt.mercado.png" />
+    <Resource Include="Resources\uy.cyt.mercado.svg" />
+  </ItemGroup>
+-->
+</Project>

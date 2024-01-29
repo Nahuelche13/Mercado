@@ -1,0 +1,127 @@
+using Gtk 4.0;
+using Adw 1;
+
+Adw.Bin _root {
+  Box {
+    orientation: vertical;
+    CenterBox {
+      vexpand: true;
+      hexpand: true;
+      
+      [start]
+      Box {
+        orientation: vertical;
+
+        SearchEntry _search_entry {
+          margin-top: 6;
+          margin-start: 6;
+          margin-end: 6;
+          margin-bottom: 6;
+        }
+
+        ScrolledWindow {
+          vexpand: true;
+          hexpand: true;
+
+          ListBox _search_box {
+            margin-top: 6;
+            margin-start: 6;
+            margin-end: 6;
+            margin-bottom: 6;
+            selection-mode: none;
+            hexpand: true;
+          }
+        }
+      }
+
+      [center]
+      Separator {
+      }
+
+      [end]
+      Box {
+        orientation: vertical;
+
+        ScrolledWindow {
+          vexpand: true;
+          hexpand: true;
+
+          ListBox _cart_box {
+            margin-top: 6;
+            margin-start: 6;
+            margin-end: 6;
+            margin-bottom: 6;
+            hexpand: true;
+            selection-mode: none;
+          }
+        }
+
+        Box {
+          margin-top: 6;
+          margin-start: 6;
+          margin-end: 6;
+          margin-bottom: 6;
+
+          Label {
+            halign: start;
+            hexpand: true;
+            label: _('Total');
+
+            styles [
+              "title-1",
+            ]
+          }
+
+          Label _total_price_label {
+            halign: end;
+            hexpand: true;
+            label: '$555';
+
+            styles [
+              "title-1",
+            ]
+          }
+        }
+
+        CenterBox {
+          margin-top: 6;
+          margin-start: 6;
+          margin-end: 6;
+          margin-bottom: 6;
+
+          [start]
+          Button _clear_button {
+            margin-start: 6;
+            margin-end: 6;
+            hexpand: true;
+
+            Adw.ButtonContent {
+              icon-name: 'user-trash-symbolic';
+              label: _('Limpiar');
+            }
+
+            styles [
+              "destructive-action",
+            ]
+          }
+
+          [end]
+          Button _pay_button {
+            margin-start: 6;
+            margin-end: 6;
+            hexpand: true;
+
+            styles [
+              "suggested-action",
+            ]
+
+            Adw.ButtonContent {
+              icon-name: 'org.gnome.Software-symbolic';
+              label: _('Pagar');
+            }
+          }
+        }
+      }
+    }
+  }
+}
