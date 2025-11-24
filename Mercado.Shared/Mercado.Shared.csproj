@@ -21,7 +21,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Data.Sqlite" Version="9.0.7" />
-    <PackageReference Include="Microsoft.DotNet.ILCompiler" Version="9.0.7" />
+    <PackageReference Include="Microsoft.DotNet.ILCompiler" Version="10.0.0" />
   </ItemGroup>
 <!--
   <ItemGroup>
